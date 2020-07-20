@@ -1,0 +1,18 @@
+import numpy as np
+import pandas as pd
+
+sen = 'tente outra vez vez tente'
+tok_seq = str.split(sen)
+vocab = sorted(set(tok_seq))
+num_tok = len(tok_seq)
+vocab_size = len(vocab)
+
+print(vocab_size)
+print(num_tok)
+
+one_hot = np.zeros((num_tok, vocab_size), int)
+
+for i, word in enumerate(tok_seq):
+    one_hot[i, vocab.index(word)] = 1
+    
+print(pd.DataFrame(one_hot, columns = vocab))
