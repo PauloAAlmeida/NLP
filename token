@@ -1,0 +1,11 @@
+sen = '''um um um dois tres quatro.\n'''
+sen += '''dois tres cinco sete.\n'''
+sen += '''sete dois quatro dois.\n'''
+corpus ={}
+
+for i, sent in enumerate(sen.split('\n')):
+    corpus['sent{}'.format(i)] = dict((tok,1) for tok in sent.split())
+    
+df = pd.DataFrame.from_records(corpus).fillna(0).astype(int).T
+
+print(df[df.columns[:]])
